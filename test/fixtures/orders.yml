@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  mobile: MyString
+  status: MyString
+  notified: false
+
+two:
+  customer_name: MyString
+  mobile: MyString
+  status: MyString
+  notified: false

@@ -1,0 +1,52 @@
+
+<p>
+  <strong>Customer Name:</strong>
+  <%= @order.customer_name %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @order.mobile %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status ? @order.status : "Open"  %>
+</p>
+
+<p>
+  <strong>Notified to Cutomer:</strong>
+  <%= @order.notified ? @order.notified : false %>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%= @order.total_price  %>
+</p>
+
+<p>
+  <strong>Total Tax (18%) </strong>
+  <%= @order.total_tax %>
+</p>
+
+<p>
+  <strong>Bill amount </strong>
+  <%= @order.bill_amount %>
+</p>
+
+<% if @order.status == "Delivered" || @order.notified == true %>
+  <p> This order got processed and will deliver in few mins </p>
+<% else %>
+
+  <h2>Items added so far</h2>
+  <%= render @order.products %>
+
+  <% if @order.products.present? %>
+    <h2>Add items to place complete the order:</h2>
+    <%= render 'products/form' %>
+  <% else %>
+    <h4> No items are added to this order so far </h4>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', orders_path %>

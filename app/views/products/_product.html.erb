@@ -1,0 +1,8 @@
+<table border="1px" width=100%>
+	<tr>
+		<td width=10% align="center"><%= product.id %></td>
+		<td width=50%><%= Item.find(product.item).item_name %></td>
+		<td width=10%><%= product.qty %></td>
+		<td width=30% align="center"><%= product.qty * Item.find(product.item).price %></td>
+	</tr>
+</table>

@@ -1,0 +1,13 @@
+<%= form_with(model: [ @order, @order.products.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :item %><br>
+    <%= form.collection_select :item, Item.order(:item_name),:id, :item_name %>
+  </p>
+  <p>
+    <%= form.label :qty %><br>
+    <%= form.number_field :qty, min: 1, default: 1%>
+  </p>
+  <p>
+    <%= form.submit "Add items to order"%>
+  </p>
+<% end %>

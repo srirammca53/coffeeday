@@ -1,0 +1,38 @@
+
+
+ <%= link_to 'New Order', new_order_path %>
+<h1>List of Orders</h1> |
+<br/>
+
+<table border="1px">
+  <tr>
+    <th>Order ID</th>
+    <th>Customer Name</th>
+    <th>Mobile</th>
+    <th>Status</th>
+    <th>Notified to Customer</th>
+    <th>Actions</th>
+    <th>Order Ready</th>
+    <th>Order Delivered?</th>
+
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.customer_name %></td>
+      <td><%= order.mobile %></td>
+      <td  align="center"><%= order.status %></td>
+      <td align="center"><%= order.notified %></td>
+      <td><%= link_to 'Show', order_path(order) %></td>
+      <td align="center">
+        <% if order.notified == true %>
+          <p> Notified to customer</p>
+        <% else %>
+          <%= link_to 'Notify to Customer', order_notify_path(order) %>
+        <% end %>
+      </td>
+      <td align="center"><%= order.status == "Delivered" ? true : false %><% if order.status != "Delivered" %> <%= link_to 'Deliver now', order_deliver_path(order) %><% end %></td>
+    </tr>
+  <% end %>
+</table>
